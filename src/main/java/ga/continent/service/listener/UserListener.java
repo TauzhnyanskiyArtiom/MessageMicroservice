@@ -20,7 +20,9 @@ public class UserListener {
     UserReadMapper userReadMapper;
     UserService loggedUserService;
 
-    @KafkaListener(id = "UserGroupId", topics = "UserInfo")
+    @KafkaListener(
+            id = "${spring.kafka.consumer.group-id}",
+            topics = "${spring.kafka.template.default-topic}")
     public void kafkaListen(String data) {
         UserReadDto userReadDto = gson.fromJson(data, UserReadDto.class);
         UserEntity user = userReadMapper.map(userReadDto);
