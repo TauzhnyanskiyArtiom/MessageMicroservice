@@ -14,5 +14,12 @@ spring:
         show_sql: true
         format_sql: true
         hbm2ddl.auto: update
+  kafka:
+    bootstrap-servers: localhost:29092
+    template:
+      default-topic: UserInfo
+    consumer:
+      group-id: UserGroupId
+      auto-offset-reset: latest
 server:
   port: 9090

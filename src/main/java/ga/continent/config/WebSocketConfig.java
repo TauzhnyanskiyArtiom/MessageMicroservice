@@ -1,5 +1,7 @@
 package ga.continent.config;
 
+import com.google.gson.Gson;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,4 +25,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/websocket").setAllowedOrigins("http://localhost:9000").withSockJS();
     }
+
+    @Bean
+    public Gson gson(){
+        return new Gson();
+    }
+
 }
